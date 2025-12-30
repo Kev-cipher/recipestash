@@ -1,0 +1,47 @@
+.container1 h1 {
+  color: burlywood;
+}
+
+.container1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  flex: 1;
+}
+
+#headersearch {
+  width: 2px;
+  padding: 5px;
+  margin: 18px;
+  border-radius: 14px;
+}
+
+#login {
+  margin: 4px;
+  padding: 8px 16px;
+}
+#headerLinks {
+  display: flex;
+  gap: 20px;
+  list-style-type: none;
+  padding: 0;
+  margin: 20px;
+}
+
+#headerLinks li a {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+}
+
+#About {
+  margin-left: auto;
+}
+
+#headerLinks #About a {
+  color: burlywood;
+}
