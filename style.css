@@ -14,10 +14,12 @@
 }
 
 #headersearch {
-  width: 2px;
+  width: 256;
   padding: 5px;
   margin: 18px;
   border-radius: 14px;
+  margin-left: auto;
+  height: auto;
 }
 
 #login {
