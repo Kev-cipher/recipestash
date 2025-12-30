@@ -27,6 +27,13 @@
   margin-right: 20px;
   padding: 8px 16px;
 }
+.sidebar{
+  border: solid black 2px;
+  width: 350px;
+  height: 600px;
+  margin-left: 73%;
+  margin-top: 10px;
+}
 #headerLinks {
   display: flex;
   gap: 20px;
