@@ -1,22 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>RecipeStash</title>
-    </head>
-    <body>
-        <div>
-            <!--First section-->
-            <div class="container1">
-                <h1>RecipeStash</h1>
-                <hr>
-            </div>
-            <!--Second section-->
-            <div class="container2">
-                <h3>Favorites</h3>
-                <hr>
-            </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RecipeStash</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div>
+      <!--First section-->
+      <div class="container1">
+        <h1>RecipeStash</h1>
+        <div class="header">
+        <input type="text" placeholder="Search recipes..."class="header" id="headersearch"/>
+        <button id="login">Login</button>
         </div>
-    </body>
+      </div>
+      <!--Second section-->
+      <div class="container2">
+        <ul id="headerLinks">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Favorites</a></li>
+          <li><a href="#">Trending</a></li>
+          <li><a href="#">Categories</a></li>
+          <li id="About"><a href="#">About Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+  </body>
 </html>
