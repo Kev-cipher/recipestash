@@ -65,10 +65,14 @@
   border: solid black 2px;
   width: 1200px;
   height: 450px;
-  margin: 10px;
   margin-right: auto;
+  margin-top: 10px;
 }
 
 .slideshow #slidetitle {
   /*PlaceHolder*/
+}
+
+.container3 {
+ display: flex;
 }
