@@ -1,3 +1,7 @@
+body {
+  overflow: visible;
+}
+
 .container1 h1 {
   color: burlywood;
 }
@@ -76,6 +80,13 @@
   max-height: 350px;
 }
 
+#slideshow3 {
+   border: solid black 2px;
+  height: 900px;
+  margin-bottom: 15px;
+  max-height: 350px;
+}
+
 .sidebar {
   flex: 0.7;
   border: solid black 2px;
@@ -102,8 +113,9 @@
    border: solid black 2px;
   height: 900px;
   width: 85vh;
-
 }
+
+
 
   .sidebar {
     display: flex;
