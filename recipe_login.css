@@ -1,0 +1,39 @@
+#input{
+    border: solid blue 2px;
+    height:100vh;
+    width: 50%
+}
+
+
+#animation{
+    border: solid red 2px;
+    height:100vh;
+    width:50%
+
+}
+
+.page{
+    height:100vh;
+    display:flex;
+}
+
+.container{
+    border: solid green 2px;
+    margin-top: 16%;
+    width: 70%;
+    height: 80%;;
+    margin-left: 15%;
+}
+
+h1{
+    margin-left: 40%;
+    margin-top: 10%;
+}
+
+#login_input{
+    border: solid orchid 3px;
+    width: 95%;
+    height: 75%;
+    margin-left: 2%;
+    margin-top:5%;
+}
