@@ -31,9 +31,58 @@ h1{
 }
 
 #login_input{
-    border: solid orchid 3px;
     width: 95%;
     height: 75%;
     margin-left: 2%;
     margin-top:5%;
+}
+
+#labelemail{
+   font-size: 20px;
+   height: 8%;
+}
+
+#email{
+    border: transparent;
+    width: 99%;
+    font-size: 20px;
+    height: 20%;
+    margin-top: 10px;
+}
+
+
+#labelp{
+    font-size: 20px;
+    height: 8%;
+    margin-top:20px;
+}
+
+#password{
+    border: transparent;
+    width: 99%;
+    font-size: 20px;
+    height: 20%;
+}
+
+.loginbutton{
+    border: black solid 2px;
+    color: white;
+    margin-top: 30px;
+    margin-left: 10%;
+    border-radius: 40px;
+    width: 80%;
+    font-size: 15px;
+    padding: 15px;
+    background-color: black;
+}
+
+.registerbutton{
+    border: black solid 2px;
+    margin-top: 20px;
+    margin-left: 10%;
+    border-radius: 40px;
+    width: 80%;
+    font-size: 15px;
+    padding: 15px;
+    background-color: white;
 }
