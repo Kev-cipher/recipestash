@@ -12,6 +12,7 @@ body {
   align-items: center;
 }
 
+
 .header {
   display: flex;
   flex: 1;
@@ -99,7 +100,7 @@ body {
 
 
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 875px) {
   
   .container3 {
     flex-direction: column;
@@ -113,6 +114,11 @@ body {
    border: solid black 2px;
   height: 900px;
   width: 85vh;
+}
+
+
+#slideshow1 h3 {
+  margin: 16px;
 }
 
 
