@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href = "recipe_login.css" />
-        <title>Login</title>
+        <title>RecipeStash</title>
     </head>
     <body>
         <!--Container covering the entire page-->
@@ -17,15 +17,28 @@
             <div id="input">
                 <div class="container">
                     <h1> Login </h1>
-                    <hr>
+                    <!--Login info-->
                     <div id="login_input">
-                        <label for="email"><b>Email</b></label>
                         <div>
-                            <input type="email" placeholder="Email" email="Email" required>
+                            <label id='labelemail' for="email"><b>Email:</b></label>
                         </div>
-                        <label for="password"><b>Password:</b></label>
                         <div>
-                            <input type="password" placeholder="Password" name="password" required>
+                            <input id='email' type="email" placeholder="Email" email="Email" required>
+                        </div>
+                        <hr>
+                        <div id='labelp'>
+                            <label for="password"><b>Password:</b></label>
+                        </div>
+                        <div>
+                            <input id='password' type="password" placeholder="Password" name="password" required>
+                        </div>
+                        <hr>
+                        <!--Login button-->
+                        <div>
+                            <button type="submit" class="loginbutton"><b>Login</b></button>
+                        </div>
+                        <div>
+                            <button class="registerbutton"><b>Register</b></button>
                         </div>
                     </div>
                 </div>
