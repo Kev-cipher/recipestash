@@ -12,6 +12,11 @@ body {
   align-items: center;
 }
 
+.container2 #headerLinks {
+  margin: 0;
+  margin-right: auto;
+}
+
 
 .header {
   display: flex;
@@ -133,6 +138,10 @@ body {
     margin-right: auto;
   }
 }
+
+
+
+
 
 
 
