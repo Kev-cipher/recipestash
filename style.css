@@ -141,8 +141,8 @@ body {
 
 body.dark {
   background-color: black;
-  color: white;
-  border: solid black;
+  color: transparent;
+  border: transparent;
   margin: 0;
 }
 
