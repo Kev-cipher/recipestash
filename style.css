@@ -139,14 +139,6 @@ body {
   }
 }
 
-body.dark {
-  background-color: black;
-  color: transparent;
-  border: transparent;
-  margin: 0;
-}
-
-
 body.dark .container1,
 body.dark .container2,
 body.dark .container3,
@@ -154,9 +146,16 @@ body.dark #slideshow1,
 body.dark #slideshow2,
 body.dark #slideshow3,
 body.dark .sidebar{
-  background-color: black;
-  border: 2px solid white;
+  background-color: #1B1D21;
+  border-color: solid white;
   color: white;
+}
+
+body.dark {
+  background-color: #1B1D21;
+  color: white;
+  border: transparent;
+  margin: 0;
 }
 
 
