@@ -142,7 +142,8 @@ body {
 body.dark {
   background-color: black;
   color: white;
-  border: none;
+  border: solid black;
+  margin: 0;
 }
 
 
