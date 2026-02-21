@@ -139,9 +139,14 @@ body {
   }
 }
 
-body.dark{
+body.dark .container1,
+body.dark .container2,
+body.dark .container3,
+body.dark .slideshow1,
+body.dark .slideshow2,
+body.dark .slideshow3{
   background-color: black;
-  border: 2px solid white;
+  border-color: solid white;
   color: white;
 }
 
