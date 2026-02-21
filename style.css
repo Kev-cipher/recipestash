@@ -139,9 +139,9 @@ body {
   }
 }
 
-body.dark{
+body.dark *{
   background-color: black;
-  border-color: white;
+  border-color: solid white;
 }
 
 
