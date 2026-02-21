@@ -158,6 +158,10 @@ body.dark {
   margin: 0;
 }
 
+body.dark .container2{
+  color: white;
+}
+
 
 
 
