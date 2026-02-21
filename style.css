@@ -139,14 +139,21 @@ body {
   }
 }
 
+body.dark {
+  background-color: black;
+  color: white;
+}
+
+
 body.dark .container1,
 body.dark .container2,
 body.dark .container3,
 body.dark .slideshow1,
 body.dark .slideshow2,
-body.dark .slideshow3{
-  background-color: black;
-  border-color: solid white;
+body.dark .slideshow3,
+body.dark .recipe1 {
+  background-color: #1a1a1a; 
+  border: 2px solid white;    
   color: white;
 }
 
