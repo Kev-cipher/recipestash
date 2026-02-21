@@ -154,7 +154,7 @@ body.dark #slideshow2,
 body.dark #slideshow3,
 body.dark .sidebar{
   background-color: black;
-  border-color: solid white;
+  border: 2px solid white;
   color: white;
 }
 
