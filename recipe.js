@@ -5,5 +5,5 @@ recipeBox.innerHTML = `
     <h4>Recipe 1</h4>
     <p>pizza</p>
 `;
-slideshow3.appendChild('recipeBox');
+slideshow3.appendChild(recipeBox);
 
