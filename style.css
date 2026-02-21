@@ -140,8 +140,8 @@ body {
 }
 
 body.dark{
-  background-color: darkslategrey;
-  border-color: solid white 4px;
+  background-color: black;
+  border: 2px solid white;
   color: white;
 }
 
