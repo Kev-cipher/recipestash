@@ -7,3 +7,10 @@ recipeBox.innerHTML = `
 `;
 slideshow3.appendChild(recipeBox);
 
+// dark mode 
+
+const darkMode= document.getElementbyID('darkMode');
+
+darkMode.addEventlistener('click', () => {
+    document.body.classList.toggle('dark')
+});
