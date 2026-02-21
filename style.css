@@ -139,7 +139,10 @@ body {
   }
 }
 
-
+body.dark{
+  background-color: black;
+  border-color: white;
+}
 
 
 
