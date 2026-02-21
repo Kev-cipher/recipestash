@@ -9,8 +9,8 @@ slideshow3.appendChild(recipeBox);
 
 // dark mode 
 
-const darkMode= document.getElementbyID('darkMode');
+const darkMode= document.getElementById('darkMode');
 
-darkMode.addEventlistener('click', () => {
+darkMode.addEventListener('click', () => {
     document.body.classList.toggle('dark')
 });
