@@ -10,12 +10,16 @@
     <div>
       <!--First section-->
       <div class="container1">
-        <h1>RecipeStash</h1>
+        <h1 id="title">RecipeStash</h1>
         <div class="header">
         <input type="text" placeholder="Search recipes..." id="headersearch"/>
         <a href="recipe_login.html">
         <button id="login">Login</button>
         </a>
+            <button id="darkmode">
+              <img id="light" src="images/wb_sunny_24dp_FFFF00_FILL0_wght400_GRAD0_opsz24.svg">
+              <img id="dark" src="images/dark_mode_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg">
+            </button>
         </div>
       </div>
       <!--Second section-->
@@ -32,11 +36,15 @@
               <div class="container3">
           <div class="slideshows">
             <div id="slideshow1">
-              <h3>Favorites</h3>
-              <hr>
+              <h3>Create Recipe
+                <button id="addRecipe">
+                <span>&#43;</span>
+                </button>
+                <hr>
+              </h3>
             </div>
             <div id="slideshow2">
-              <h3>All Time Favorites</h3>
+              <h3>Favorites</h3>
               <hr>
             </div>
             <div id="slideshow3">
@@ -52,8 +60,33 @@
           </div>
         </div>
       </div>
+      <!--Popup Form Container-->
+      <div class="recipeform">
+        <form class="form-container">
+          <h1>Recipe</h1>
+
+          <label for="Recipe Name"><b>Recipe name</b></label>
+          <input type="text" placeholder="Enter recipe name" id="name" required>
+
+          <label for="brief_description"><b>Description</b></label>
+          <input type="text" placeholder="Give us the rundown..." id="desc" required>
+
+          <label for="type"><b>Category</b></label>
+          <select id="category">
+            <option value="">--Please choose a category</option>
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="quicksnack">Quick-Snack</option>
+          </select>   
+
+          <button id="save">Save</button>
+          <button id="exit"><img src="images/disabled_by_default_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" ></button>
+        </form>
+      </div>
       
       </div>
-    <script src= "recipe.js"</script>
+        <script src="recipe.js"></script>
   </body>
 </html>
+
