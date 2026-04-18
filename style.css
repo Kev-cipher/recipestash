@@ -1,15 +1,32 @@
 body {
-  overflow: visible;
 }
 
 .container1 h1 {
   color: burlywood;
 }
 
+button {
+  min-width: 40px
+}
+
 .container1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-sizing: border-box;  
+}
+.container1 button  {
+  flex-shrink: 1;      /* allows buttons to shrink */
+  min-width: 0;        /* removes minimum size floor */
+  white-space: nowrap; /* stops text from wrapping weirdly */
+  font-size: clamp(0.6rem, 1.5vw, 1rem); /* text scales with screen width */
+  padding: clamp(4px, 1vw, 10px) clamp(6px, 1.5vw, 16px); /* padding scales too */
+}
+
+.container1 #darkmode {
+  border-radius: 50%;
+  cursor: pointer
+  
 }
 
 .container2 #headerLinks {
@@ -21,6 +38,8 @@ body {
 .header {
   display: flex;
   flex: 1;
+  box-sizing: border-box;
+  overflow: auto;
 }
 
 #headersearch {
@@ -28,7 +47,7 @@ body {
   padding: 6px;
   margin: 10px;
   border-radius: 14px;
-  margin-left: 65%;
+  margin-left: auto;
   height: auto;
 }
 
@@ -72,11 +91,25 @@ body {
 
 }
 
+#slideshow1 h3 {
+  position: relative;
+}
+
 #slideshow1 {
   border: solid black 2px;
   height: 900px;
   margin-bottom: 15px;
   max-height: 350px;
+}
+
+#addRecipe {
+  position: absolute;
+  top: -10px;
+  right: 0;
+  margin-right: 30px;
+  font-size: 25px;
+  cursor: pointer
+  
 }
 
 #slideshow2 {
@@ -99,13 +132,56 @@ body {
   margin-top: 10px;
   align-self: flex-start;
   height: 1200px;
-  max-height: 1200px;
+  max-height: 1090px;
   margin-left: auto;
 }
 
+.recipeform {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.form-container {
 
 
-@media only screen and (max-width: 875px) {
+  background-color: tan;
+  color: white;
+  padding: 45px;
+
+
+  h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  
+
+  button {
+    display: flex;
+    margin-left: 40px;
+    justify-content: center;
+    width: 100px;
+    background-color: lightblue;
+  }
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#darkMode {
+  font-size: 10px;
+  padding: 10px 10px;
+}
+
+@media only screen and (max-width: 800px) {
+
+  div {
+    max-width: clamp(400px, 100%, 780px)
+  }
   
   .container3 {
     flex-direction: column;
@@ -120,6 +196,7 @@ body {
   height: 900px;
   width: 85vh;
 }
+
 
 
 #slideshow1 h3 {
@@ -137,32 +214,38 @@ body {
     margin-left: auto;
     margin-right: auto;
   }
+
+  .container1, .header {
+    box-sizing: border-box;
+  }
+
 }
 
+body.dark {
+  background-color: black;
+  color: transparent;
+  border: none;
+    background-color: #1B1D21;
 
+}
 
-body.dark .container3,
 body.dark #slideshow1,
 body.dark #slideshow2,
 body.dark #slideshow3,
 body.dark .sidebar{
-  background-color: #1B1D21;
-  border-color: solid white;
+    background-color: #1B1D21;
+  border: 2px solid white;
   color: white;
-}
-
-body.dark {
-  background-color: #1B1D21;
-  color: white;
-  border: transparent;
-  margin: 0;
 }
 
 body.dark #headerLinks a {
   color: white;
 }
 
+.buttonBackgroundDark {
+  background-color: white
+}
 
-
-
-
+.buttonBackgroundLight {
+  background-color: black
+}
