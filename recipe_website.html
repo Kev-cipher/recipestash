@@ -61,15 +61,20 @@
         </div>
       </div>
       <!--Popup Form Container-->
-      <div class="recipeform">
+      <div class="recipeform" id="recipeform">
         <form class="form-container">
           <h1>Recipe</h1>
 
-          <label for="Recipe Name"><b>Recipe name</b></label>
-          <input type="text" placeholder="Enter recipe name" id="name" required>
+          <label for="name"><b>Recipe name</b></label>
+          <input placeholder="Enter recipe name" id="name">
 
-          <label for="brief_description"><b>Description</b></label>
-          <input type="text" placeholder="Give us the rundown..." id="desc" required>
+          <label for="desc"><b>Description</b></label>
+          <textarea placeholder="Give us the rundown..." id="desc" rows="4"></textarea>
+
+          <label for="foodImage" class="image-upload"><b>Add an Image</b>
+          <span>+</span>
+          <input type="file" id="foodImage" accept="image/*">
+        </label>
 
           <label for="type"><b>Category</b></label>
           <select id="category">
@@ -89,4 +94,3 @@
         <script src="recipe.js"></script>
   </body>
 </html>
-
