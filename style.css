@@ -136,15 +136,25 @@ button {
   margin-left: auto;
 }
 
+.reappear {
+  display: block; /*toggle class that makes popup appear*/
+}
+
 .recipeform {
+  display: none; /*Block popup until add recipe button is pressed*/
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
 }
 
+
 .form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: solid black 4px;
+  width: 85%;
 
 
   background-color: tan;
@@ -162,15 +172,41 @@ button {
 
   button {
     display: flex;
-    margin-left: 40px;
     justify-content: center;
     width: 100px;
     background-color: lightblue;
+    margin-left: 75px;
   }
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+
+  textarea {
+    height: 50px;
+    margin: 10px;
+
+  }
+  
 }
+
+.image-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 120px;
+  border: 3px dashed black;
+  cursor: pointer;
+  flex-direction: column;
+  padding: 0;
+}
+
+.image-upload span {
+  font-size: 50px;
+}
+
+.image-upload input {
+  display: none;
+}
+
+
 
 #darkMode {
   font-size: 10px;
@@ -232,10 +268,16 @@ body.dark {
 body.dark #slideshow1,
 body.dark #slideshow2,
 body.dark #slideshow3,
-body.dark .sidebar{
-    background-color: #1B1D21;
+body.dark .sidebar,
+body.dark #darkmode,
+body.dark .form-container{
+  background-color: #1B1D21;
   border: 2px solid white;
   color: white;
+}
+
+#darkmode {
+  background-color: white;
 }
 
 body.dark #headerLinks a {
@@ -249,3 +291,5 @@ body.dark #headerLinks a {
 .buttonBackgroundLight {
   background-color: black
 }
+
+
