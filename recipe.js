@@ -41,9 +41,19 @@ darkMode.addEventListener("click", () => {
     updateIcon();
 });
 
-reader.onload = function(event) {
-pickedImage = reader.result
-}
+document.getElementById("foodImage").addEventListener("change", (event) => {
+    const file = event.target.files[0]
+
+    reader.onload = function () {
+      pickedImage = reader.result;
+      console.log(pickedImage);
+    };
+
+    reader.readAsDataURL(file)
+  }
+)
+
+
 
 save.addEventListener("click", function(event) {
 
@@ -52,6 +62,8 @@ const description = document.getElementById("desc").value
 const image = pickedImage
 const category = document.getElementById("category").value
 const recipe = document.createElement("div")
+const goButton = document.createElement("button")
+goButton.textContent = "Go to Recipe"
 
 if (!recipeName || !description || !category) {
   return;
@@ -67,17 +79,22 @@ boxDesc.textContent = description
 boxImage.src = pickedImage
 boxCategory.textContent = category
 
-recipe.appendChild(boxImage)
+
+recipe.appendChild(boxImage);
 recipe.appendChild(boxRecipe);
 recipe.appendChild(boxCategory);
-recipe.appendChild(boxDesc);
+//recipe.appendChild(boxDesc); This will go on the back of the recipe card
+recipe.appendChild(goButton)
+recipe.classList.add("recipeDesign") //Adds design class to the recipe container
 pickedImage = null;
+reader.abort();
 
 createBox.appendChild(recipe)
 
 popup.style.display = "none";
 document.getElementById("form").reset()
 event.preventDefault()
+
 
 });
 
