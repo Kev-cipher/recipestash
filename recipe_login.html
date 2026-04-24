@@ -18,29 +18,31 @@
                 <div class="container">
                     <h1> Login </h1>
                     <!--Login info-->
-                    <div id="login_input">
-                        <div>
-                            <label id='labelemail' for="email"><b>Email:</b></label>
+                    <form action="login.php" method= "POST">
+                        <div id="login_input">
+                            <div>
+                                <label id='labelemail' for="email"><b>Email:</b></label>
+                            </div>
+                            <div>
+                                <input id='email' type="email" placeholder="Email" name="email" required>
+                            </div>
+                            <hr>
+                            <div id='labelp'>
+                                <label for="password"><b>Password:</b></label>
+                            </div>
+                            <div>
+                                <input id='password' type="password" placeholder="Password" name="password" required>
+                            </div>
+                            <hr>
+                            <!--Login button-->
+                            <div>
+                                <button type="submit" class="loginbutton"><b>Login</b></button>
+                            </div>
+                            <div>
+                                <button type="button"class="registerbutton" onclick="window.location.href='recipe_signup.html'"><b>Register</b></button>
+                            </div>
                         </div>
-                        <div>
-                            <input id='email' type="email" placeholder="Email" email="Email" required>
-                        </div>
-                        <hr>
-                        <div id='labelp'>
-                            <label for="password"><b>Password:</b></label>
-                        </div>
-                        <div>
-                            <input id='password' type="password" placeholder="Password" name="password" required>
-                        </div>
-                        <hr>
-                        <!--Login button-->
-                        <div>
-                            <button type="submit" class="loginbutton"><b>Login</b></button>
-                        </div>
-                        <div>
-                            <button class="registerbutton"><b>Register</b></button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
