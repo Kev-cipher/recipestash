@@ -86,3 +86,7 @@ h1{
     padding: 15px;
     background-color: white;
 }
+
+button{
+    cursor: pointer;
+}
