@@ -1,8 +1,8 @@
 <?php
 session_start();
-// clear the variables
+//Clear the variables
 session_unset();  
-// end session
+//End session
 session_destroy(); 
 header("Location: recipe_website.php");
 exit();
