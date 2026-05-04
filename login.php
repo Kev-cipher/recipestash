@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         //Compare the typed password to the scrambled one in the database
         if (password_verify($password, $user['password'])){
             
-            //Store the ID and Email in the "Session"
+            //Store the ID and Email
             $_SESSION["user_id"] = $user["user_id"]; 
             $_SESSION["user_email"] = $email;
 
