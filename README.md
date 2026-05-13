@@ -1,6 +1,6 @@
 # RecipeStash
 
-RecipeStash is a web application that allows the user to save, organize, and favorite their own recipes!
+RecipeStash is a web application that allows the user to save, organize, and favorite their own recipes! The purpose of making this website was to practice using the common front end languages such as HTML, CSS, backend langauges such as javascript, and introduce ourselves to databases through the use of SQL and PHP.
 
 Features
 - Create recipes with specific types, descriptions, and images
