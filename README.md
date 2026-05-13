@@ -41,8 +41,8 @@ Techstack
 - PHP/MySQL
 
 Contributors
-- @SamDevelops971
-- @Kev-cipher
+- [@SamDevelops971](https://github.com/SamDevelops971)
+- [@Kev-cipher](https://github.com/Kev-cipher)
 
 
 
