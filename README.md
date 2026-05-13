@@ -40,5 +40,9 @@ Techstack
 - JS
 - PHP/MySQL
 
+Contributors
+- @SamDevelops971
+- @Kev-cipher
+
 
 
