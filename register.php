@@ -15,7 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     //Run the command
     if ($stmt->execute()){
-        echo "Registration successful! <a href='recipe_login.html'>Login here</a>";
+        //redirect the user to the main website page
+        header("Location: recipe_website.php");
     }
     else {
         echo "Error:" . $stmt->error;
