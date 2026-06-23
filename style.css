@@ -95,20 +95,29 @@ button {
   position: relative;
 }
 
-#slideshow1 {
+#slideshow1-wrapper {
   border: solid black 2px;
-  height: 900px;
+  margin-bottom: 15px;
+}
+
+#slideshow1-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#slideshow1 {
+  display: flex;
+  flex-wrap: nowrap;
+  gap:16px;
   margin-bottom: 15px;
   max-height: 350px;
+  overflow-x:auto;
 }
 
 #addRecipe {
-  position: absolute;
-  top: -10px;
-  right: 0;
-  margin-right: 30px;
   font-size: 25px;
-  cursor: pointer
+  cursor: pointer;
   
 }
 
@@ -200,6 +209,12 @@ button {
 
 .image-upload span {
   font-size: 50px;
+  margin-right: 20px;
+}
+
+#addRecipe {
+  margin-right: 20px;
+  margin-top: 8px;
 }
 
 .image-upload input {
@@ -216,20 +231,31 @@ button {
 }
 
 .recipeDesign {
-  position: relative;
-  display: flex;
+position: relative;
+display: flex;
 border-radius: 8px;
 border: solid tan 4px;
 flex-direction: column;
 max-width: 200px;
 height: 75%;
+min-height: 267px;
+margin: 15px;
 
 span {
   position: absolute;
   top: 70%;
   left: 50%;
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
+  border: solid black 2px;
+  border-radius: 11px;
+  padding: 5px;
+  background-color: white;
+  font-family:'Times New Roman', Times, serif
 }
+
+
+
+
 
 button {
 border-radius: 4px;
@@ -237,6 +263,12 @@ border: dashed black 4px;
 background-color: lightblue
 }
 
+h2 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+}
 }
 
 @media only screen and (max-width: 800px) {
@@ -296,7 +328,9 @@ body.dark #slideshow2,
 body.dark #slideshow3,
 body.dark .sidebar,
 body.dark #darkmode,
-body.dark .form-container{
+body.dark .form-container,
+body.dark #slideshow1-header,
+body.dark #slideshow1-wrapper {
   background-color: #1B1D21;
   border: 2px solid white;
   color: white;
@@ -317,5 +351,4 @@ body.dark #headerLinks a {
 .buttonBackgroundLight {
   background-color: black
 }
-
 
