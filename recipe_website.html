@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RecipeStash</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
   </head>
   <body>
     <div>
@@ -22,6 +23,7 @@
             </button>
         </div>
       </div>
+
       <!--Second section-->
       <div class="container2">
         <ul id="headerLinks">
@@ -33,25 +35,29 @@
         </ul>
         <hr>
       </div>
-              <div class="container3">
-          <div class="slideshows">
-            <div id="slideshow1">
-              <h3>Create Recipe
+      <!--Categories-->
+      <div class="container3">
+        <div class="createRecipe">
+            <div id="create-wrapper">
+              <div id="create-header">
+              <h3>Create Recipe</h3>
                 <button id="addRecipe">
                 <span>&#43;</span>
                 </button>
-                <hr>
-              </h3>
-            </div>
-            <div id="slideshow2">
-              <h3>Favorites</h3>
+              </div>
               <hr>
+            </div>
+          <!--Favorites Section-->
+          <div id="slideshow2">
+          <h3>Favorites</h3>
+           <hr>
             </div>
             <div id="slideshow3">
               <h3>Recently Published</h1>
               <hr>
             </div>
             </div>
+          <!--Popular Section-->
         <div class="sidebar">
           <div id="sidetitle">
               <h4>Popular</h4>
@@ -61,35 +67,86 @@
         </div>
       </div>
       <!--Popup Form Container-->
-      <div class="recipeform" id="recipeform">
-        <form class="form-container">
-          <h1>Recipe</h1>
+      <div id="overlay"></div>
+        <div class="form" id="recipeform">
+          <div class="form-container">
+          <h1>Recipe Creator</h1>
 
-          <label for="name"><b>Recipe name</b></label>
-          <input placeholder="Enter recipe name" id="name">
+            <div class="categories-1">
 
-          <label for="desc"><b>Description</b></label>
-          <textarea placeholder="Give us the rundown..." id="desc" rows="4"></textarea>
+              <div class="category-button">
+                <button id="breakfast" class="foodbutton"><i class="em em-fried_egg" aria-role="presentation" aria-label="COOKING"></i></button>
+                <span>Breakfast</span>
+              </div>
+
+              <div class="category-button">
+                <button id="lunch" class="foodbutton"><i class="em em-hamburger" aria-role="presentation" aria-label="HAMBURGER"></i></button>
+                <span>Lunch</span>
+              </div>
+
+              <div class="category-button">
+              <button id="dinner" class="foodbutton"><i class="em em-stew" aria-role="presentation" aria-label="POT OF FOOD"></i></button>
+              <span>Dinner</span>
+            </div>
+
+          </div>
+
+            <div class="categories-2">
+
+              <div class="category-button">
+              <button id="dessert" class="foodbutton"><i class="em em-cake" aria-role="presentation" aria-label="SHORTCAKE"></i></button>
+              <span>Dessert</span>
+              </div>
+
+              <div class="category-button">
+              <button id="snack" class="foodbutton"><i class="em em-rice_cracker" aria-role="presentation" aria-label="RICE CRACKER"></i></button>
+              <span>Snack/Condiment</span>
+              </div>
+
+            </div>
+
+            <label for="name"><b>Recipe name</b></label>
+            <input placeholder="Enter recipe name" id="name">
+
+            <label for="desc"><b>Description</b></label>
+            <textarea placeholder="Give us the rundown..." id="desc" rows="4"></textarea>
 
           <label for="foodImage" class="image-upload"><b>Add an Image</b>
-          <span>+</span>
-          <input type="file" id="foodImage" accept="image/*">
-        </label>
+            <span>+</span>
+            <input type="file" id="foodImage" accept="image/*">
+          </label>
 
-          <label for="type"><b>Category</b></label>
-          <select id="category">
-            <option value="">--Please choose a category</option>
-            <option value="breakfast">Breakfast</option>
-            <option value="lunch">Lunch</option>
-            <option value="dinner">Dinner</option>
-            <option value="quicksnack">Quick-Snack</option>
-          </select>   
 
-          <button id="save">Save</button>
-          <button id="exit"><img src="images/disabled_by_default_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" ></button>
+          <!--Cook Time and Prep Time divs for the form-->
+          <div class="cookAndPrep">
+
+            <div class="cook">
+              <i class="em em-pencil2" aria-role="presentation" aria-label="PENCIL"></i>
+              <input type="text" placeholder="Cook Time">
+            </div>
+            
+            <div class="prep">
+              <i class="em em-pencil2" aria-role="presentation" aria-label="PENCIL"></i>
+              <input type="text" placeholder="Prep Time">
+            </div>
+
+          </div>
+
+          <!--Div(s) for the Save and Exit buttons on the form-->
+          <div class="saveAndExit">
+
+            <div class="save">
+              <button id="save">Save</button>
+            </div>
+
+            <div class="exit">
+              <button id="exit"><img src="images/disabled_by_default_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg" ></button>
+            </div>
+
+          </div>
+
         </form>
       </div>
-      
       </div>
         <script src="recipe.js"></script>
   </body>
