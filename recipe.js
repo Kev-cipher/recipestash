@@ -1,4 +1,3 @@
-const recents = document.getElementById("recents");
 const recipeBox = document.createElement("div");
 const moon = document.getElementById("dark")
 const sun = document.getElementById("light")
@@ -7,7 +6,7 @@ const save = document.getElementById("save")
 const exit = document.getElementById("exit")
 const addrecipe = document.getElementById("addRecipe")
 const popup = document.getElementById("recipeform")
-const createBox = document.getElementById("recents-wrapper")
+const recents = document.getElementById("recents-wrapper")
 const overlay = document.getElementById("overlay");
 const breakfast = document.getElementById("breakfast")
 const dessert = document.getElementById("dessert")
@@ -161,7 +160,7 @@ pickedImage = null;
 reader.abort();
 //Resets the image picked 
 
-createBox.appendChild(recipe)
+recents.appendChild(recipe)
 //Appends the recipe to the recents box
 
 
