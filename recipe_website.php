@@ -12,6 +12,7 @@ $isLoggedIn = isset($_SESSION["user_id"]);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RecipeStash</title>
     <link rel="stylesheet" href="style.css" />
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
   </head>
   <body>
     <div>
@@ -30,82 +31,158 @@ $isLoggedIn = isset($_SESSION["user_id"]);
                 <!-- if not logged in, there is no log out screen and does not appear name of user(email) -->
                 <button id="login" onclick="window.location.href='recipe_login.html'">Login</button>
             <?php endif; ?>
+            </a>
+            <button id="darkmode">
+              <img id="light" src="images/wb_sunny_24dp_FFFF00_FILL0_wght400_GRAD0_opsz24.svg">
+              <img id="dark" src="images/dark_mode_24dp_000000_FILL0_wght400_GRAD0_opsz24.svg">
+            </button>
+        </div>
+      </div>
+        <!--Second section-->
+      <div class="container2">
+        <ul id="headerLinks">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Favorites</a></li>
+          <li><a href="#">Trending</a></li>
+          <li><a href="#">Categories</a></li>
+          <li id="About"><a href="#">About Us</a></li>
+        </ul>
+        <hr>
+      </div>
+      <!--Categories-->
+      <div class="container3">
+        <div class="mainColumn">
+
+        <div class="createRecipe">
+            <div id="create-wrapper">
+              <div id="create-header">
+              <h3>Create Recipe</h3>
+                <button id="addRecipe">
+                <span>&#43;</span>
+                </button>
+              </div>
+              <hr>
+            </div>
+
+            <!--Recents Section-->
+
+            <div class="recents">
+               <div id="recently-created">
+                  <div id="recents-header">
+                    <h3>Recents</h3>
+                </div>
+                <hr>
+              </div>
+            </div>
+
+          </div>
+
+          <!--Favorites Section-->
+
+          <div class="favorites">
+            <div id="favorites-wrapper">
+              <div id="favorites-header">
+                <h3>Favorites</h3>
+              </div>
+              <hr>
+            </div>
+          </div>
+
         </div>
         
-      <!--Second section-->
-       <div class="container2">
-                <ul id="headerLinks">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Favorites</a></li>
-                    <li><a href="#">Trending</a></li>
-                    <li><a href="#">Categories</a></li>
-                    <li id="About"><a href="#">About Us</a></li>
-                </ul>
-                <hr>
-            </div>
-            <!--Third Section-->
-            <div class="container3">
-                <div class="slideshows">
-                    <div id="slideshow1">
-                        <h3>Create Recipe
-                            <button id="addRecipe">
-                                <span>&#43;</span>
-                            </button>
-                            <hr>
-                        </h3>
-                    </div>
-                    <div id="slideshow2">
-                        <h3>Favorites</h3>
-                        <hr>
-                    </div>
-                    <div id="slideshow3">
-                        <h3>Recently Published</h3>
-                        <hr>
-                    </div>
-                </div>
-            <!--Side Bar Section-->
-                <div class="sidebar">
-                    <div id="sidetitle">
-                        <h4>Popular</h4>
-                        <hr>
-                    </div>
-                </div>
-            </div>
-            <!--Recipe Form pop up for adding recipe into the given container-->  
-            <div class="recipeform" id="recipeform">
-                <form class="form-container">
-                    <h1>Recipe</h1>
+            
+          <!--Popular Section-->
+        <div class="sidebar">
+          <div id="sidetitle">
+              <h4>Popular</h4>
+              <hr>
+          </div>
+        </div>
 
-                    <label for="name"><b>Recipe name</b></label>
-                    <input placeholder="Enter recipe name" id="name">
+      </div>
+      <!--Popup Form Container-->
+      <div id="overlay"></div>
+        <div class="form" id="recipeform">
+          <div class="form-container">
+          <h1>Recipe Creator</h1>
 
-                    <label for="desc"><b>Description</b></label>
-                    <textarea placeholder="Give us the rundown..." id="desc" rows="4"></textarea>
+            <div class="categories-1">
 
-                    <label for="foodImage" class="image-upload">
-                        <b>Add an Image</b>
-                        <span>+</span>
-                        <input type="file" id="foodImage" accept="image/*">
-                    </label>
+              <div class="category-button">
+                <button id="breakfast" class="foodbutton"><i class="em em-fried_egg" aria-role="presentation" aria-label="COOKING"></i></button>
+                <span>Breakfast</span>
+              </div>
 
-                    <label for="type"><b>Category</b></label>
-                    <select id="category">
-                        <option value="">--Please choose a category</option>
-                        <option value="breakfast">Breakfast</option>
-                        <option value="lunch">Lunch</option>
-                        <option value="dinner">Dinner</option>
-                        <option value="quicksnack">Quick-Snack</option>
-                    </select>   
+              <div class="category-button">
+                <button id="lunch" class="foodbutton"><i class="em em-hamburger" aria-role="presentation" aria-label="HAMBURGER"></i></button>
+                <span>Lunch</span>
+              </div>
 
-                    <button id="save">Save</button>
-                    <button id="exit">
-                        <img src="images/disabled_by_default_24dp_FFFFFF_FILL0_wght400_GRAD0_opsz24.svg">
-                    </button>
-                </form>
+              <div class="category-button">
+              <button id="dinner" class="foodbutton"><i class="em em-stew" aria-role="presentation" aria-label="POT OF FOOD"></i></button>
+              <span>Dinner</span>
             </div>
 
-        </div> 
-            <!-- Javascript link-->
-        <script src="recipe.js"></script>
-    </body>
+          </div>
+
+            <div class="categories-2">
+
+              <div class="category-button">
+              <button id="dessert" class="foodbutton"><i class="em em-cake" aria-role="presentation" aria-label="SHORTCAKE"></i></button>
+              <span>Dessert</span>
+              </div>
+
+              <div class="category-button">
+              <button id="snack" class="foodbutton"><i class="em em-rice_cracker" aria-role="presentation" aria-label="RICE CRACKER"></i></button>
+              <span>Snack/Condiment</span>
+              </div>
+
+            </div>
+
+            <label for="name"><b>Recipe name</b></label>
+            <input placeholder="Enter recipe name" id="name">
+
+            <label for="desc"><b>Description</b></label>
+            <input placeholder="Give us the rundown..." id="desc" rows="4">
+
+          <label for="foodImage" class="image-upload"><b>Add an Image</b>
+            <span>+</span>
+            <input type="file" id="foodImage" accept="image/*">
+          </label>
+
+
+
+          <!--Cook Time and Prep Time divs for the form-->
+          <div class="cookAndPrep">
+
+            <div class="cook">
+              <i class="em em-pencil2" aria-role="presentation" aria-label="PENCIL"></i>
+              <input type="text" placeholder="Cook Time">
+            </div>
+            
+            <div class="prep">
+              <i class="em em-pencil2" aria-role="presentation" aria-label="PENCIL"></i>
+              <input type="text" placeholder="Prep Time">
+            </div>
+
+          </div>
+
+          <!--Div(s) for the Save and Exit buttons on the form-->
+          <div class="saveAndExit">
+
+            <div class="save">
+              <button id="save">Save</button>
+            </div>
+
+            <div class="exit">
+              <button id="exit">Exit</button>
+            </div>
+
+          </div>
+
+        </form>
+      </div>
+      </div>
+        <script src="recipe(1).js"></script>
+  </body>
 </html>
