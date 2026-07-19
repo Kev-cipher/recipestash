@@ -82,11 +82,15 @@ button {
 .container3 {
   display: flex;
   column-gap: 20px;
-
 }
 
-.slideshows {
-    flex: 2;
+.mainColumn {
+  display: flex;
+  flex-direction: column; /*stacks the categories*/
+  flex: 2;
+}
+
+.createRecipe {
     margin-top: 10px;
 
 }
@@ -95,18 +99,18 @@ button {
   position: relative;
 }
 
-#slideshow1-wrapper {
+#create-wrapper {
   border: solid black 2px;
   margin-bottom: 15px;
 }
 
-#slideshow1-header {
+#create-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-#slideshow1 {
+#slideshows {
   display: flex;
   flex-wrap: nowrap;
   gap:16px;
@@ -121,19 +125,35 @@ button {
   
 }
 
-#slideshow2 {
-   border: solid black 2px;
-  height: 900px;
+.favorites {
+  border: solid black 2px;
   margin-bottom: 15px;
-  max-height: 350px;
 }
 
-#slideshow3 {
-   border: solid black 2px;
-  height: 900px;
+#favorites-wrapper {
   margin-bottom: 15px;
-  max-height: 350px;
 }
+
+#favorites-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+#recents-wrapper {
+  border: solid black 2px;
+  margin-bottom: 15px;
+}
+
+#recents-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
 
 .sidebar {
   flex: 0.7;
@@ -142,28 +162,43 @@ button {
   align-self: flex-start;
   height: 1200px;
   max-height: 1090px;
-  margin-left: auto;
 }
 
 .reappear {
   display: block; /*toggle class that makes popup appear*/
 }
 
-.recipeform {
+
+/*Used to dim background once form is opened*/
+#overlay {
+display: none;
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.5);
+z-index: 10;
+}
+
+.form {
   display: none; /*Block popup until add recipe button is pressed*/
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 11;
 }
 
-
+/*The popup form design*/
 .form-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
   border: solid black 4px;
   width: 85%;
+  height: 650px;
+  border-radius: 6px;
+  padding: 0;
+  margin: 0;
 
 
   background-color: tan;
@@ -177,24 +212,65 @@ button {
     align-items: center;
   }
 
-  
-
-  button {
-    display: flex;
-    justify-content: center;
-    width: 100px;
-    background-color: lightblue;
-    margin-left: 75px;
-  }
-
   textarea {
     height: 50px;
     margin: 10px;
 
-  }
-  
+  }  
 }
 
+/*Divs for the food category buttons on popup*/
+.categories-1, .categories-2 {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 35px;
+}
+
+.cookAndPrep {
+  display: flex;
+  justify-content: space-evenly;
+
+  button {
+    background-color: lightblue;
+    color: black;
+  }
+}
+
+.saveAndExit {
+  display: flex;
+  justify-content: space-evenly;
+
+  button {
+    background-color: lightblue;
+    border-radius: 6px;
+    border: solid black 2px;
+    font-size: 16px;
+  }
+}
+
+/*Buttons for each Category*/
+.category-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: right;
+}
+
+input, textarea {
+  border-radius: 4px;
+  border: solid black 3px;
+}
+
+
+
+button i {
+  font-size: 32px;
+}
+
+
+/*Image upload in popup*/
 .image-upload {
   display: flex;
   justify-content: center;
@@ -236,39 +312,58 @@ display: flex;
 border-radius: 8px;
 border: solid tan 4px;
 flex-direction: column;
-max-width: 200px;
+max-width: 150px;
 height: 75%;
-min-height: 267px;
-margin: 15px;
+max-height: 270px;
+margin: 12px;
+justify-content: center;
+background-color: tan;
 
 span {
   position: absolute;
   top: 70%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: solid black 2px;
-  border-radius: 11px;
+  border: solid tan 2px;
+  border-radius: 6px;
   padding: 5px;
-  background-color: white;
+  background-color: black;
+  color: white;
   font-family:'Times New Roman', Times, serif
 }
 
 
-
-
-
 button {
 border-radius: 4px;
-border: dashed black 4px;
+border: solid black 4px;
 background-color: lightblue
 }
 
 h2 {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  text-align: center;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  /*Previous 3 lines center heading to top middle*/
+  color: black;
+  font-size: 18px;
+ }
 }
+
+.foodbutton {
+  background-color: lightblue;
+  border-radius: 4px;
+
+  i {
+    font-size: 42px;
+  }
+}
+/*
+Class used to make it easier for the user to know what category they picked
+*/
+.foodbutton.selected {
+border: solid red 6px;
+border-radius: 4px;
 }
 
 @media only screen and (max-width: 800px) {
@@ -282,37 +377,27 @@ h2 {
     align-items: center;
   }
   
-
-#slideshow2 {
-   flex: 1;
-   order: 2;
-   border: solid black 2px;
-  height: 900px;
-  width: 85vh;
-}
-
-
-
 #slideshow1 h3 {
   margin: 16px;
 }
 
-
-
-  .sidebar {
-    display: flex;
-    order: -1;
+ .favorites {
     border-bottom: solid black 2px;
     width: 85vh;
-    height: 900px;
     margin-left: auto;
     margin-right: auto;
   }
 
+  .sidebar {
+    border-bottom: solid black 2px;
+    width: 85vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
+ 
   .container1, .header {
     box-sizing: border-box;
   }
-
 }
 
 body.dark {
@@ -323,14 +408,11 @@ body.dark {
 
 }
 
-body.dark #slideshow1,
-body.dark #slideshow2,
-body.dark #slideshow3,
+body.dark .createRecipe,
 body.dark .sidebar,
-body.dark #darkmode,
 body.dark .form-container,
-body.dark #slideshow1-header,
-body.dark #slideshow1-wrapper {
+body.dark .recents,
+body.dark .favorites {
   background-color: #1B1D21;
   border: 2px solid white;
   color: white;
@@ -352,3 +434,12 @@ body.dark #headerLinks a {
   background-color: black
 }
 
+/*
+button {
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    background-color: lightblue;
+    margin-left: 75px;
+    border-radius: 6px;
+  }
