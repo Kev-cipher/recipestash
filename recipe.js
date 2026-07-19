@@ -1,4 +1,4 @@
-const slideshow3 = document.getElementById("slideshow3");
+const recents = document.getElementById("recents");
 const recipeBox = document.createElement("div");
 const moon = document.getElementById("dark")
 const sun = document.getElementById("light")
@@ -7,7 +7,7 @@ const save = document.getElementById("save")
 const exit = document.getElementById("exit")
 const addrecipe = document.getElementById("addRecipe")
 const popup = document.getElementById("recipeform")
-const createBox = document.getElementById("slideshow1")
+const createBox = document.getElementById("recents-wrapper")
 const overlay = document.getElementById("overlay");
 const breakfast = document.getElementById("breakfast")
 const dessert = document.getElementById("dessert")
@@ -16,6 +16,9 @@ const dinner = document.getElementById("dinner")
 const snack = document.getElementById("snack")
 let reader = new FileReader();
 let pickedImage = null;
+let pickedCategory = "Not Selected"
+
+
 
 //Sets automatically check for duplication. Like a HashSet
 const currentIDs = new Set();
@@ -64,14 +67,49 @@ document.getElementById("foodImage").addEventListener("change", (event) => {
 
     reader.onload = function () {
       pickedImage = reader.result;
-      pickedImage.style.width = '200px';
-      pickedImage.style.height = '200px';
-      console.log(pickedImage);
     };
 
     reader.readAsDataURL(file)
   }
 )
+
+//This section handles category selection in the form using switch case
+document.querySelectorAll(".foodbutton").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    switch (btn.id) {
+      case "breakfast":
+        pickedCategory = "Breakfast";
+        break;
+
+      case "lunch":
+        pickedCategory = "Lunch";
+        break;
+
+      case "dinner":
+        pickedCategory = "Dinner";
+        break;
+
+      case "dessert":
+        pickedCategory = "Dessert";
+        break;
+
+      case "snack":
+        pickedCategory = "Snack";
+        break;
+
+      default:
+        pickedCategory = "Not Selected";
+    }
+
+    
+
+    document
+      .querySelectorAll(".foodbutton")
+      .forEach((btn) => btn.classList.remove("selected"));
+    btn.classList.add("selected");
+    //Makes the selected category stand out in the form
+  });
+});
 
 
 
@@ -85,80 +123,51 @@ const recipeName = document.getElementById("name").value
 const description = document.getElementById("desc").value
 const image = pickedImage
 const recipe = document.createElement("div")
-const goButton = document.createElement("button")
+const visitRecipe = document.createElement("button")
+visitRecipe.textContent = "Visit Recipe"
 
-if (!recipeName || !description || !category) {
+
+if (!recipeName || !description || pickedCategory === "Not Selected") {
   return;
 }
 
 //Switch case that assigns category to recipe based on category selected
 // during the form fill (Selects based on id name)
-document.querySelectorAll('.foodbutton').forEach(btn => {
-  btn.addEventListener('click', () => {
-    let pickedCategory;
 
-    switch(btn.id) {
-      case 'breakfast' :
-        pickedCategory = "Breakfast";
-        break;
 
-      case 'lunch' :
-        pickedCategory = "Lunch";
-        break;
-
-      case 'dinner' :
-      pickedCategory = "Dinner";
-      break;
-
-      case 'dessert' :
-      pickedCategory = "Dessert";
-      break;
-
-      case 'snack' : 
-      pickedCategory = "Snack";
-      break;
-
-      default:
-        pickedCategory = "Not Selected"
-    }
-
-    boxCategory.textContent = pickedCategory;
-    //Changes category once button is pressed
-
-    document.querySelectorAll('.foodbutton').forEach(btn => btn.classList.remove('selected'));
-    btn.classList.add('selected');
-  })
-})
-
-const boxRecipe = document.createElement("h2")
+const boxRecipe = document.createElement("h2");
 const boxDesc = document.createElement("p");
-const boxCategory = document.createElement("span")
+const boxCategory = document.createElement("span");
 const boxImage = document.createElement("img");
-const recipeid = generateID()
+const recipeid = generateID();
+
 
 
 boxRecipe.textContent = recipeName
 boxDesc.textContent = description
 boxImage.src = pickedImage
+boxCategory.textContent = pickedCategory
 
 
 
 recipe.appendChild(boxImage);
 recipe.appendChild(boxRecipe);
 recipe.appendChild(boxCategory);
-recipe.id = recipeid
+recipe.appendChild(visitRecipe)
+recipe.id = recipeid //Received from function
 //recipe.appendChild(boxDesc); This will go on the back of the recipe card
 recipe.classList.add("recipeDesign") //Adds design class to the recipe container
 pickedImage = null;
 reader.abort();
+//Resets the image picked 
 
 createBox.appendChild(recipe)
+//Appends the recipe to the recents box
 
 
 popup.style.display = "none";
-document.getElementById("form").reset()
-
-
+document.querySelectorAll('#recipeform input').forEach(input => input.value = '')
+//Resets the form to be empty the next time the form is opened
 });
 
 
