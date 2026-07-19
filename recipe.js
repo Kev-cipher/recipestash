@@ -169,5 +169,79 @@ document.querySelectorAll('#recipeform input').forEach(input => input.value = ''
 //Resets the form to be empty the next time the form is opened
 });
 
-
 updateIcon() //makes sure only one icon shows when site is opened for the first time
+
+//Grabs the recipe array from the json file in create_recipe.php and append into recently_viewed container in the HTML
+
+// Wait for the HTML document to fully load before running the script
+document.addEventListener('DOMContentLoaded', () => {
+    fetchRecipes();
+});
+
+ //Fetches the recipe array from the PHP backend
+async function fetchRecipes() {
+    const container = document.getElementById('recently-created');
+    
+    try {
+        // Change 'create_recipe.php' to the actual path of your PHP file if it's different
+        const response = await fetch('create_recipe.php');
+        
+        // Check if the server responded with a 200-299 status code
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status} ${response.statusText}`);
+        }
+        
+        // Parse the JSON data sent by PHP
+        const recipes = await response.json();
+        
+        // Send the data to your display function
+        displayRecipes(recipes, container);
+        
+    } catch (error) {
+        console.error('Fetch operation failed:', error);
+        if (container) {
+            container.innerHTML = `<p class="error">Oops! Could not load recipes right now.</p>`;
+        }
+    }
+}
+
+ //Loops through the data and renders it onto the page
+function displayRecipes(recipes, container) {
+    if (!container) return;
+
+    // Clear out any placeholder text or old content
+    container.innerHTML = '';
+
+    // Incase the database is empty
+    if (recipes.length === 0) {
+        container.innerHTML = '<p>No recipes available yet. Be the first to add one!</p>';
+        return;
+    }
+
+    // Build the layout for each recipe
+    recipes.forEach(recipe => {
+        const recipeCard = document.createElement('div');
+        recipeCard.classList.add('recipe-card');
+
+        // Helper function to escape HTML to protect against XSS injection attacks
+        recipeCard.innerHTML = `
+            <h2>${escapeHTML(recipe.name)}</h2>
+            <span class="category-tag">${escapeHTML(recipe.category)}</span>
+            <div class="instructions">
+                <h3>Instructions:</h3>
+                <p>${escapeHTML(recipe.instructions).replace(/\n/g, '<br>')}</p>
+            </div>
+        `;
+
+        container.appendChild(recipeCard);
+    });
+}
+
+
+// Escapes text to prevent scripts from executing in your HTML
+ 
+function escapeHTML(string) {
+    const div = document.createElement('div');
+    div.textContent = string;
+    return div.innerHTML;
+}
