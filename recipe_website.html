@@ -90,7 +90,7 @@
       <div id="overlay"></div>
         <div class="form" id="recipeform">
           <div class="form-container">
-          <h1>Recipe Creator</h1>
+          <h1 id="heading">Recipe Creator</h1>
 
             <div class="categories-1">
 
@@ -130,7 +130,22 @@
 
             <label for="desc"><b>Description</b></label>
             <input placeholder="Give us the rundown..." id="desc" rows="4">
+            
+            <div class="step-handler">
 
+              <!--&larr is unicode for the back arrow -->
+              <!--&rarr is unicode for the forward arrow-->
+              <Span id="stepNumbers">Step 1 / 1</Span>
+              <button type="button" id="back">&larr;</button>
+              <button type="button" id="forward">&rarr;</button>
+              <button type="button" id="add">+</button>
+              <label for="steps"><b>Steps</b></label>
+            <input placeholder="Enter step details!" id="stepBox"></textarea>
+          
+          </div>
+          <input type="hidden" name="array_string" id="ArrayString">
+          <!--Used to  convert the steps array to string-->
+      
           <label for="foodImage" class="image-upload"><b>Add an Image</b>
             <span>+</span>
             <input type="file" id="foodImage" accept="image/*">
@@ -143,12 +158,12 @@
 
             <div class="cook">
               <i class="em em-pencil2" aria-role="presentation" aria-label="PENCIL"></i>
-              <input type="text" placeholder="Cook Time">
+              <input type="text" placeholder="Cook Time (Ex: 5:30)" id="cookTime">
             </div>
             
             <div class="prep">
               <i class="em em-pencil2" aria-role="presentation" aria-label="PENCIL"></i>
-              <input type="text" placeholder="Prep Time">
+              <input type="text" placeholder="Prep Time (Ex: 5:30)" id ="prepTime">
             </div>
 
           </div>
@@ -166,7 +181,6 @@
 
           </div>
 
-        </form>
       </div>
       </div>
         <script src="recipe.js"></script>
