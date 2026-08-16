@@ -111,6 +111,8 @@ document.querySelectorAll(".foodbutton").forEach((btn) => {
   });
 });
 
+//--------------------------------------Form Handling--------------------------------------//
+
 // UPDATED SAVE LISTENER: Sends data to PHP database before rendering
 save.addEventListener("click", async function(event) {
 
@@ -169,17 +171,16 @@ save.addEventListener("click", async function(event) {
   }
 
   // 3. Create the DOM elements if the database save was successful
-  const recipe = document.createElement("div")
-  const visitRecipe = document.createElement("button")
-  visitRecipe.textContent = "Visit Recipe"
   const boxRecipe = document.createElement("h2");
-  const boxDesc = document.createElement("p");
-  const boxCategory = document.createElement("span");
-  const boxImage = document.createElement("img");
-  const recipeid = generateID();
-  const cookTime = cook.value;
-  const prepTime = prep.value;
-
+      //Header for the recipe created during runtime
+      const boxCategory = document.createElement("span");
+      //Span for the recipe created during runtime
+      const boxImage = document.createElement("img");
+      //Image for the recipe created during runtime
+      const recipeid = generateID();
+      //Recipe ID generated once recipe is saved -->Stored in set to prevent repetition
+      const cookTime = cook.value;
+      const prepTime = prep.value;
 
   boxRecipe.textContent = recipeName
   boxDesc.textContent = description
@@ -203,7 +204,6 @@ save.addEventListener("click", async function(event) {
   document.querySelectorAll('#recipeform input').forEach(input => input.value = '');
   document.getElementById("desc").value = ''; // Clears the description textarea
   saveStep(); //Saves the most recently typed step
-  ArrayString.value = JSON.stringify(steps); //Puts the array of strings into an organized json file
 });
 
 //-------------------------Step Handling-----------------------------
@@ -249,7 +249,7 @@ forwardArrow.addEventListener("click", () => {
 
 
 
-//--------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------
 
 
 updateIcon() //makes sure only one icon for dark mode shows when site is opened for the first time
