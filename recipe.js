@@ -20,6 +20,7 @@ const backArrow = document.getElementById('back')
 const forwardArrow = document.getElementById('forward')
 const addStep = document.getElementById('add');
 const ArrayString = document.getElementById("ArrayString")
+//Used to store the steps 
 const cook = document.getElementById('cookTime')
 const prep = document.getElementById('prepTime')
 let reader = new FileReader();
@@ -112,16 +113,25 @@ document.querySelectorAll(".foodbutton").forEach((btn) => {
 
 // UPDATED SAVE LISTENER: Sends data to PHP database before rendering
 save.addEventListener("click", async function(event) {
-  overlay.style.display = 'none' //Gets rid of the dim effect in the background
+
   event.preventDefault();
 
   const recipeName = document.getElementById("name").value;
   const description = document.getElementById("desc").value;
   const image = pickedImage;
 
-  if (!recipeName || !description || pickedCategory === "Not Selected") {
-    return;
-  }
+  if (
+      !recipeName ||
+      !description ||
+      pickedCategory === "Not Selected" ||
+      cook.value.trim() === "" ||
+      prep.value.trim() === ""
+    ) {
+      alert("Make sure all info is filled out!")
+      return ;
+    } else {
+
+      overlay.style.display = 'none' //Gets rid of the dim effect in the background
 
   // 1. Package the data to send to the server
   const recipeData = {
@@ -129,6 +139,9 @@ save.addEventListener("click", async function(event) {
     description: description,
     category: pickedCategory,
     image: image // This is your base64 image string
+    //Steps: steps
+    //cookTime: cookTime
+    //prepTime: prepTime
   };
 
   // 2. Send the data to your PHP backend
@@ -164,6 +177,9 @@ save.addEventListener("click", async function(event) {
   const boxCategory = document.createElement("span");
   const boxImage = document.createElement("img");
   const recipeid = generateID();
+  const cookTime = cook.value;
+  const prepTime = prep.value;
+
 
   boxRecipe.textContent = recipeName
   boxDesc.textContent = description
@@ -186,9 +202,57 @@ save.addEventListener("click", async function(event) {
   popup.style.display = "none";
   document.querySelectorAll('#recipeform input').forEach(input => input.value = '');
   document.getElementById("desc").value = ''; // Clears the description textarea
+  saveStep(); //Saves the most recently typed step
+  ArrayString.value = JSON.stringify(steps); //Puts the array of strings into an organized json file
 });
 
-updateIcon() //makes sure only one icon shows when site is opened for the first time
+//-------------------------Step Handling-----------------------------
+let steps = [""];
+//Empty array that will hold the steps
+let currentStep = 0
+
+function updateStepInfo() {
+  stepBox.value = steps[currentStep]
+  stepLabel.textContent = `Step ${currentStep + 1} / ${steps.length}`;
+}
+
+function saveStep() {
+  steps[currentStep] = stepBox.value;
+}
+
+forwardArrow.addEventListener("click", () => {
+    saveStep();
+    if (currentStep < steps.length - 1) {
+      currentStep += 1;
+      updateStepInfo();
+    }
+});
+
+  backArrow.addEventListener("click", () => {
+    saveStep();
+    if (currentStep > 0) {
+      currentStep -= 1;
+      updateStepInfo();
+    }
+  });
+
+  addStep.addEventListener("click", () => {
+    saveStep();
+    steps.push(""); //Adds an element to end of array
+    currentStep = steps.length - 1;
+    updateStepInfo();
+  });
+
+  
+
+  updateStepInfo();
+
+
+
+//--------------------------------------------------------------------
+
+
+updateIcon() //makes sure only one icon for dark mode shows when site is opened for the first time
 
 // Wait for the HTML document to fully load before running the script
 document.addEventListener('DOMContentLoaded', () => {
