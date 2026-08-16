@@ -460,13 +460,3 @@ body.dark #headerLinks a {
 .buttonBackgroundLight {
   background-color: black
 }
-
-/*
-button {
-    display: flex;
-    justify-content: center;
-    width: 100px;
-    background-color: lightblue;
-    margin-left: 75px;
-    border-radius: 6px;
-  }
