@@ -17,11 +17,8 @@ let reader = new FileReader();
 let pickedImage = null;
 let pickedCategory = "Not Selected"
 
-
-
 //Sets automatically check for duplication. Like a HashSet
 const currentIDs = new Set();
-
 
 //Function that makes sure IDs aren't repeated 
 function generateID() {
@@ -33,7 +30,6 @@ function generateID() {
   currentIDs.add(ID);
   return ID;
 }
-
 
 addrecipe.addEventListener("click", () => {
   popup.style.display = "block"; //Makes the form visible
@@ -56,21 +52,19 @@ function updateIcon() {
 darkMode.addEventListener("click", () => {
   isDarkMode = !isDarkMode; // Changes boolean depending on current mode
   document.body.classList.toggle("dark");
-    updateIcon();
+  updateIcon();
 });
-
 
 //Listens for a change in foodImage and renders it
 document.getElementById("foodImage").addEventListener("change", (event) => {
-    const file = event.target.files[0]
+  const file = event.target.files[0]
 
-    reader.onload = function () {
-      pickedImage = reader.result;
-    };
+  reader.onload = function () {
+    pickedImage = reader.result;
+  };
 
-    reader.readAsDataURL(file)
-  }
-)
+  reader.readAsDataURL(file)
+})
 
 //This section handles category selection in the form using switch case
 document.querySelectorAll(".foodbutton").forEach((btn) => {
@@ -100,8 +94,6 @@ document.querySelectorAll(".foodbutton").forEach((btn) => {
         pickedCategory = "Not Selected";
     }
 
-    
-
     document
       .querySelectorAll(".foodbutton")
       .forEach((btn) => btn.classList.remove("selected"));
@@ -110,75 +102,92 @@ document.querySelectorAll(".foodbutton").forEach((btn) => {
   });
 });
 
-
-
-save.addEventListener("click", function(event) {
+// UPDATED SAVE LISTENER: Sends data to PHP database before rendering
+save.addEventListener("click", async function(event) {
   overlay.style.display = 'none' //Gets rid of the dim effect in the background
-
   event.preventDefault();
 
+  const recipeName = document.getElementById("name").value;
+  const description = document.getElementById("desc").value;
+  const image = pickedImage;
 
-const recipeName = document.getElementById("name").value
-const description = document.getElementById("desc").value
-const image = pickedImage
-const recipe = document.createElement("div")
-const visitRecipe = document.createElement("button")
-visitRecipe.textContent = "Visit Recipe"
+  if (!recipeName || !description || pickedCategory === "Not Selected") {
+    return;
+  }
 
+  // 1. Package the data to send to the server
+  const recipeData = {
+    name: recipeName,
+    description: description,
+    category: pickedCategory,
+    image: image // This is your base64 image string
+  };
 
-if (!recipeName || !description || pickedCategory === "Not Selected") {
-  return;
-}
+  // 2. Send the data to your PHP backend
+  try {
+    // Change 'save_recipe.php' to the file that handles your SQL INSERT
+    const response = await fetch('save_recipe.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(recipeData)
+    });
 
-//Switch case that assigns category to recipe based on category selected
-// during the form fill (Selects based on id name)
+    if (!response.ok) {
+      throw new Error(`Server error: ${response.status}`);
+    }
 
+    const result = await response.json();
+    console.log("Successfully saved to database:", result);
+    
+  } catch (error) {
+    console.error("Failed to save to database:", error);
+    alert("There was an error saving your recipe to the database.");
+    return; // Stops the function so the recipe doesn't show up locally if the database save failed
+  }
 
-const boxRecipe = document.createElement("h2");
-const boxDesc = document.createElement("p");
-const boxCategory = document.createElement("span");
-const boxImage = document.createElement("img");
-const recipeid = generateID();
+  // 3. Create the DOM elements if the database save was successful
+  const recipe = document.createElement("div")
+  const visitRecipe = document.createElement("button")
+  visitRecipe.textContent = "Visit Recipe"
+  const boxRecipe = document.createElement("h2");
+  const boxDesc = document.createElement("p");
+  const boxCategory = document.createElement("span");
+  const boxImage = document.createElement("img");
+  const recipeid = generateID();
 
+  boxRecipe.textContent = recipeName
+  boxDesc.textContent = description
+  boxImage.src = pickedImage
+  boxCategory.textContent = pickedCategory
 
+  recipe.appendChild(boxImage);
+  recipe.appendChild(boxRecipe);
+  recipe.appendChild(boxCategory);
+  recipe.appendChild(visitRecipe)
+  recipe.id = recipeid //Received from function
+  recipe.classList.add("recipeDesign") //Adds design class to the recipe container
+  
+  recents.appendChild(recipe)
+  //Appends the recipe to the recents box
 
-boxRecipe.textContent = recipeName
-boxDesc.textContent = description
-boxImage.src = pickedImage
-boxCategory.textContent = pickedCategory
-
-
-
-recipe.appendChild(boxImage);
-recipe.appendChild(boxRecipe);
-recipe.appendChild(boxCategory);
-recipe.appendChild(visitRecipe)
-recipe.id = recipeid //Received from function
-//recipe.appendChild(boxDesc); This will go on the back of the recipe card
-recipe.classList.add("recipeDesign") //Adds design class to the recipe container
-pickedImage = null;
-reader.abort();
-//Resets the image picked 
-
-recents.appendChild(recipe)
-//Appends the recipe to the recents box
-
-
-popup.style.display = "none";
-document.querySelectorAll('#recipeform input').forEach(input => input.value = '')
-//Resets the form to be empty the next time the form is opened
+  //Resets the form and variables
+  pickedImage = null;
+  reader.abort();
+  popup.style.display = "none";
+  document.querySelectorAll('#recipeform input').forEach(input => input.value = '');
+  document.getElementById("desc").value = ''; // Clears the description textarea
 });
 
 updateIcon() //makes sure only one icon shows when site is opened for the first time
-
-//Grabs the recipe array from the json file in create_recipe.php and append into recently_viewed container in the HTML
 
 // Wait for the HTML document to fully load before running the script
 document.addEventListener('DOMContentLoaded', () => {
     fetchRecipes();
 });
 
- //Fetches the recipe array from the PHP backend
+//Fetches the recipe array from the PHP backend
 async function fetchRecipes() {
     const container = document.getElementById('recently-created');
     
@@ -205,7 +214,7 @@ async function fetchRecipes() {
     }
 }
 
- //Loops through the data and renders it onto the page
+//Loops through the data and renders it onto the page
 function displayRecipes(recipes, container) {
     if (!container) return;
 
@@ -225,6 +234,7 @@ function displayRecipes(recipes, container) {
 
         // Helper function to escape HTML to protect against XSS injection attacks
         recipeCard.innerHTML = `
+            <img src="${recipe.image ? recipe.image : 'default-placeholder.jpg'}" alt="Recipe Image">
             <h2>${escapeHTML(recipe.name)}</h2>
             <span class="category-tag">${escapeHTML(recipe.category)}</span>
             <div class="instructions">
@@ -237,11 +247,10 @@ function displayRecipes(recipes, container) {
     });
 }
 
-
 // Escapes text to prevent scripts from executing in your HTML
- 
 function escapeHTML(string) {
     const div = document.createElement('div');
     div.textContent = string;
     return div.innerHTML;
 }
+
