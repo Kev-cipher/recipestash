@@ -7,16 +7,24 @@ const exit = document.getElementById("exit")
 const addrecipe = document.getElementById("addRecipe")
 const popup = document.getElementById("recipeform")
 const recents = document.getElementById("recently-created")
+const favorites = document.getElementById("favorites")
 const overlay = document.getElementById("overlay");
 const breakfast = document.getElementById("breakfast")
 const dessert = document.getElementById("dessert")
 const lunch = document.getElementById("lunch")
 const dinner = document.getElementById("dinner")
 const snack = document.getElementById("snack")
+const stepBox = document.getElementById('stepBox')
+const stepLabel = document.getElementById('stepNumbers')
+const backArrow = document.getElementById('back')
+const forwardArrow = document.getElementById('forward')
+const addStep = document.getElementById('add');
+const ArrayString = document.getElementById("ArrayString")
+const cook = document.getElementById('cookTime')
+const prep = document.getElementById('prepTime')
 let reader = new FileReader();
 let pickedImage = null;
 let pickedCategory = "Not Selected"
-
 //Sets automatically check for duplication. Like a HashSet
 const currentIDs = new Set();
 
