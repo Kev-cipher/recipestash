@@ -141,9 +141,10 @@ save.addEventListener("click", async function(event) {
     description: description,
     category: pickedCategory,
     image: image // This is your base64 image string
-    //Steps: steps
-    //cookTime: cookTime
-    //prepTime: prepTime
+    //steps: steps,
+    //cookTime: cookTime,
+    //prepTime: prepTime,
+    //timeCreated: timeCreated
   };
 
   // 2. Send the data to your PHP backend
