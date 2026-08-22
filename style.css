@@ -137,6 +137,8 @@ button {
   margin-bottom: 15px;
 }
 
+
+
 #recents-header {
   display: flex;
   justify-content: space-between;
@@ -230,6 +232,11 @@ z-index: 10;
   }
 }
 
+/*recent div design*/
+#recently-created {
+  overflow-x: scroll;
+}
+
 
 
 #heading {
@@ -316,9 +323,10 @@ button i {
   margin-left: auto;
 }
 
-.recipeDesign {
+/*.recipeDesign {
 position: relative;
 display: flex;
+box-sizing: border-box;
 border-radius: 8px;
 border: solid tan 4px;
 flex-direction: column;
@@ -328,6 +336,7 @@ max-height: 270px;
 margin: 12px;
 justify-content: center;
 background-color: tan;
+
 
 .selectedCategory {
   position: absolute;
@@ -342,22 +351,67 @@ background-color: tan;
   font-family:'Times New Roman', Times, serif
 }
 
+img {
+  height: 50%;
+}
 
 button {
 border-radius: 4px;
 background-color: lightblue;
-height: 48px;
+height: auto;
 }
 
 h2 {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  /*Previous 3 lines center heading to top middle*/
+  display: flex;
   color: black;
-  font-size: 18px;
+  font-size: 12.5px;
+  text-align: center;
  }
+}*/
+
+.recipeDesign {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: solid tan 4px;
+  flex-direction: column;
+  max-width: 210px;
+  height: auto;
+  max-height: none;
+  margin: 12px;
+  justify-content: center;
+  background-color: tan;
+}
+
+.selectedCategory {
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: solid tan 2px;
+  border-radius: 6px;
+  padding: 5px;
+  background-color: black;
+  color: white;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.recipeDesign img {
+  height: 50%;
+}
+
+.recipeDesign button {
+  border-radius: 4px;
+  background-color: lightblue;
+  height: auto;
+}
+
+.recipeDesign h2 {
+  color: black;
+  font-size: 12.5px;
+  text-align: center;
+  border: dashed black 2px;
 }
 
 .foodbutton {
@@ -377,7 +431,7 @@ border: solid red 6px;
 border-radius: 4px;
 }
 
-.favoriteButton:hover .heart {
+.favorited:hover .heart {
 color: red;
 }
 
@@ -457,3 +511,13 @@ body.dark #headerLinks a {
 .buttonBackgroundLight {
   background-color: black
 }
+
+/*
+button {
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    background-color: lightblue;
+    margin-left: 75px;
+    border-radius: 6px;
+  }
