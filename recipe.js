@@ -7,7 +7,7 @@ const exit = document.getElementById("exit")
 const addrecipe = document.getElementById("addRecipe")
 const popup = document.getElementById("recipeform")
 const recents = document.getElementById("recently-created")
-const favorites = document.getElementById("favorites")
+const favorites = document.getElementById("favorites-wrapper")
 const overlay = document.getElementById("overlay");
 const breakfast = document.getElementById("breakfast")
 const dessert = document.getElementById("dessert")
@@ -183,20 +183,36 @@ save.addEventListener("click", async function(event) {
       const cookTime = cook.value;
       const prepTime = prep.value;
 
-  boxRecipe.textContent = recipeName
+  boxRecipe.textContent = `${recipeName} [${pickedCategory}]`
   boxDesc.textContent = description
   boxImage.src = pickedImage
   boxCategory.textContent = pickedCategory
+  visitRecipe.textContent = "Visit Recipe";
+  favoriteRecipe.innerHTML = `Favorite Recipe <span class="heart">♡</span>`;
 
-  recipe.appendChild(boxImage);
   recipe.appendChild(boxRecipe);
-  recipe.appendChild(boxCategory);
+  recipe.appendChild(boxImage);
   recipe.appendChild(visitRecipe)
+  recipe.appendChild(favoriteRecipe)
   recipe.id = recipeid //Received from function
   recipe.classList.add("recipeDesign") //Adds design class to the recipe container
   
   recents.appendChild(recipe)
   //Appends the recipe to the recents box
+
+    favoriteRecipe.addEventListener("click", () => {
+    const heart = favoriteRecipe.querySelector(".heart");
+    const isFavorited = heart.classList.toggle("favorited")
+    //Toggle to check whether recipe is in favorites
+
+    if (isFavorited) {
+      favorites.appendChild(recipe)
+      heart.style.color = "red"; //Makes the heart red
+    } else {
+      recents.appendChild(recipe)
+      heart.style.color = "black"; //Returns it to original color
+    }
+  });
 
   //Resets the form and variables
   pickedImage = null;
